@@ -27,7 +27,7 @@ In-conversation text search for the DeepSeek Harness web UI — the `Ctrl+F` you
 ## Install
 
 ```sh
-dsh plugin --profile web add https://github.com/<your-username>/dsh-conv-search/archive/refs/heads/main.tar.gz
+dsh plugin --profile web add https://github.com/beijingwahw/dsh-conv-search/archive/refs/heads/main.tar.gz
 dsh web   # restart the server to pick the plugin up
 ```
 
