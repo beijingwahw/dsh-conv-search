@@ -2,7 +2,7 @@
   "name": "@dsh-external/dsh-conv-search",
   "version": "0.1.0",
   "type": "module",
-  "description": "In-conversation text search for DeepSeek Harness (Ctrl+F).",
+  "description": "会话寻踪 — in-conversation text search for DeepSeek Harness (Ctrl+F).",
   "main": "lib/index.js",
   "exports": {
     ".": "./lib/index.js",
