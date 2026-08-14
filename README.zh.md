@@ -1,4 +1,4 @@
-# 对话内文本搜索 · dsh-conv-search
+# dsh-conv-search（对话内文本搜索）
 
 [English](README.md) | 中文
 
