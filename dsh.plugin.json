@@ -1,0 +1,13 @@
+{
+  "id": "@dsh-external/dsh-conv-search",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "description": "In-conversation text search for DeepSeek Harness: Ctrl+F opens a floating search bar, walks every chat node, highlights matches, and jumps between them. Zero core changes.",
+  "engines": {
+    "dsh": ">=0.0.1"
+  },
+  "contributes": {
+    "tools": [],
+    "skills": []
+  }
+}

@@ -1,0 +1,8 @@
+# dsh-conv-search bundle patch: mounts the plugin into a profile layer stack.
+# The host half is an empty registration shell (all behavior is browser-side),
+# but the row must exist so the boot graph scans the package's `dsh.client`
+# declaration and serves `lib/client.js` at /plugins/<id>/client.js.
+# The plugin has no config; the row needs nothing beyond id and name.
+- insert:
+    - id: conv-search
+      name: '@dsh-external/dsh-conv-search'
