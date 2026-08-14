@@ -26,6 +26,8 @@
 
 ## 安装
 
+需要 Node.js ≥ 22 与 pnpm（`npm install -g pnpm`）——`dsh plugin add` 通过 pnpm 把 bundle 装入 profile。
+
 ```sh
 dsh plugin --profile web add https://github.com/beijingwahw/dsh-conv-search/archive/refs/heads/main.tar.gz
 dsh web   # 重启服务以加载插件
@@ -79,6 +81,11 @@ npm test            # vitest (jsdom)：engine、controller、i18n
 - 需要浏览器支持 CSS Custom Highlight API（Chrome/Edge 105+、Safari 17.2+、Firefox 132+）。在不支持的浏览器上，搜索栏仍会计数匹配，但不绘制高亮。
 - 搜索栏位置固定（`top: 64px; right: 24px`），暂不可拖拽。
 - 搜索范围仅限当前会话列——侧边栏会话标题与设置页面有意排除在外。
+
+## 排障
+
+- `dsh plugin add` 时报 `'pnpm' 不是内部或外部命令` → 先安装 pnpm：`npm install -g pnpm`。
+- `dsh web` 报 `EADDRINUSE ... :3080` → 上一个 `dsh web` 仍占用端口。在其终端按 Ctrl+C 停掉；Windows 可用 `Get-NetTCPConnection -LocalPort 3080 | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }`，或换端口启动：`dsh web --port 3081`。
 
 ## 许可证
 

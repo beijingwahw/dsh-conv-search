@@ -26,6 +26,8 @@ In-conversation text search for the DeepSeek Harness web UI — the `Ctrl+F` you
 
 ## Install
 
+Requires Node.js ≥ 22 and pnpm (`npm install -g pnpm`) — `dsh plugin add` installs the bundle into the profile with pnpm.
+
 ```sh
 dsh plugin --profile web add https://github.com/beijingwahw/dsh-conv-search/archive/refs/heads/main.tar.gz
 dsh web   # restart the server to pick the plugin up
@@ -79,6 +81,11 @@ The client bundle enforces the harness purity rule: platform modules (react, cor
 - Requires a browser with the CSS Custom Highlight API (Chrome/Edge 105+, Safari 17.2+, Firefox 132+). On unsupported browsers the bar still counts matches but paints no highlight.
 - The bar position is fixed (`top: 64px; right: 24px`); it is not draggable yet.
 - Search scope is the active conversation column only — sidebar session titles and settings pages are intentionally out of scope.
+
+## Troubleshooting
+
+- `'pnpm' is not recognized` during `dsh plugin add` → install pnpm first: `npm install -g pnpm`.
+- `EADDRINUSE ... :3080` on `dsh web` → a previous `dsh web` is still bound to the port. Stop it (Ctrl+C in its terminal; on Windows: `Get-NetTCPConnection -LocalPort 3080 | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }`), or start on another port with `dsh web --port 3081`.
 
 ## License
 
