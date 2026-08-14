@@ -1,4 +1,4 @@
-# 会话寻踪 · dsh-conv-search
+# 对话内文本搜索 · dsh-conv-search
 
 [English](README.md) | 中文
 
