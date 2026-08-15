@@ -1,5 +1,9 @@
 # dsh-conv-search（对话内文本搜索）
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![dsh-plugin](https://img.shields.io/badge/dsh-plugin-blue)](https://github.com/topics/dsh-plugin)
+[![DeepSeek Harness](https://img.shields.io/badge/DeepSeek-Harness-orange)](https://github.com/deepseek-ai/deepseek-harness)
+
 English | [中文](README.zh.md)
 
 In-conversation text search for the DeepSeek Harness web UI — the `Ctrl+F` you already know, scoped to the current chat session. A floating search bar highlights every match in the rendered transcript and walks between them, without touching a single line of harness core code.
