@@ -32,12 +32,14 @@ In-conversation text search for the DeepSeek Harness web UI — the `Ctrl+F` you
 
 Requires Node.js ≥ 22 and pnpm (`npm install -g pnpm`) — `dsh plugin add` installs the bundle into the profile with pnpm.
 
+### One-liner
+
 ```sh
-dsh plugin --profile web add https://github.com/beijingwahw/dsh-conv-search/archive/refs/tags/v0.1.0.tar.gz
+dsh plugin add beijingwahw/dsh-conv-search --profile web
 dsh web   # restart the server to pick the plugin up
 ```
 
-Tag URLs are immutable, so the tarball checksum never changes. (Branch URLs like `refs/heads/main` move with every push and trip pnpm's `ERR_PNPM_TARBALL_INTEGRITY` once a lockfile has recorded an older checksum.)
+> Common follow-ups: upgrade `dsh plugin upgrade dsh-conv-search --profile web`; uninstall `dsh plugin remove dsh-conv-search --profile web`; local-path install `dsh plugin add ./dsh-conv-search --profile web`.
 
 The package declares `dsh.bundle.patch` (mounts the host registration row) and `dsh.client` (serves the browser half at `/plugins/<id>/client.js`). `lib/` is committed, so the GitHub tarball installs without a build step.
 
@@ -73,10 +75,10 @@ None. The plugin only reads the rendered transcript in the browser; it touches n
 ## Development
 
 ```sh
-npm install
-npm run typecheck   # strict TS, no emit
-npm run build       # tsdown: host ESM + browser client bundle
-npm test            # vitest (jsdom): engine, controller, i18n
+pnpm install
+pnpm run typecheck   # strict TS, no emit
+pnpm run build       # tsdown: host ESM + browser client bundle, then tsc for declarations
+pnpm test            # vitest (jsdom): engine, controller, i18n
 ```
 
 The client bundle enforces the harness purity rule: platform modules (react, cordis, the seeded client packages) stay externals, and any other `@deepseek-ai/*` value import fails the build.

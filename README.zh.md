@@ -28,14 +28,14 @@
 
 需要 Node.js ≥ 22 与 pnpm（`npm install -g pnpm`）——`dsh plugin add` 通过 pnpm 把 bundle 装入 profile。
 
-将本仓库放入 DeepSeek Harness 的插件目录（或通过包管理器安装），Harness 会依据 dsh.plugin.json 与 cordis.patch.yml 自动加载。
+### 一键安装
 
 ```sh
-dsh plugin --profile web add https://github.com/beijingwahw/dsh-conv-search/archive/refs/tags/v0.1.0.tar.gz
+dsh plugin add beijingwahw/dsh-conv-search --profile web
 dsh web   # 重启服务以加载插件
 ```
 
-tag 地址不可变，tarball 校验和永不变化。（`refs/heads/main` 这类分支地址随每次推送变动，lockfile 记录过旧校验和后会触发 pnpm 的 `ERR_PNPM_TARBALL_INTEGRITY`。）
+> 常用进阶命令：升级 `dsh plugin upgrade dsh-conv-search --profile web`；卸载 `dsh plugin remove dsh-conv-search --profile web`；本地路径安装 `dsh plugin add ./dsh-conv-search --profile web`。
 
 包内声明了 `dsh.bundle.patch`（挂载宿主注册行）与 `dsh.client`（在 `/plugins/<id>/client.js` 提供浏览器端）。`lib/` 已提交，因此 GitHub tarball 无需构建步骤即可安装。
 
@@ -71,10 +71,10 @@ dsh --profile web --dump-config | grep conv-search
 ## 开发
 
 ```sh
-npm install
-npm run typecheck   # 严格 TS，不产出
-npm run build       # tsdown：宿主 ESM + 浏览器客户端包
-npm test            # vitest (jsdom)：engine、controller、i18n
+pnpm install
+pnpm run typecheck   # 严格 TS，不产出
+pnpm run build       # tsdown：宿主 ESM + 浏览器客户端包；tsc 生成声明
+pnpm test            # vitest (jsdom)：engine、controller、i18n
 ```
 
 客户端包强制执行 Harness 的纯净性规则：平台模块（react、cordis、已注入的客户端包）保持为 external，任何其他 `@deepseek-ai/*` 值导入都会导致构建失败。
