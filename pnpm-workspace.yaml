@@ -1,0 +1,2 @@
+patchedDependencies:
+  '@deepseek-ai/cordis-plugin-hmr': patches/@deepseek-ai__cordis-plugin-hmr.patch
